@@ -5,9 +5,18 @@ module.exports = (app) => {
         passport.authenticate('google', { scope: ['profile'] })
     );
     app.get('/auth/google/callback', 
-        passport.authenticate('google')
+        passport.authenticate('google'),
+        //After the passport has autheticated the callback having the token it is redirected to surveys
+        (req, res) => {
+            res.redirect('/surveys');
+        }
     );
     app.get('/api/current_user', (req, res) => {
         res.send(req.user);
-    })
+    });
+
+    app.get('/api/logout', (req, res) => {
+        req.logout();
+        res.redirect('/');
+    });
 }
