@@ -7,7 +7,7 @@ const passport = require("passport");
 require("./models/users");
 
 const authRoutes = require("./routes/authRoutes");
-const billingRoutes = require("./routes/billingRoutes");
+//const billingRoutes = require("./routes/billingRoutes");
 const Keys = require("./config/keys");
 
 app.use(
@@ -35,7 +35,7 @@ const options = {
 };
 mongoose.connect(database, options);
 authRoutes(app); // This is imp , placing this line on top after const keys gives initialization error
-billingRoutes(app);
+//billingRoutes(app);
 
 if(process.env.NODE_ENV === 'Production'){
   //Express will serve up production assets like
