@@ -37,19 +37,19 @@ mongoose.connect(database, options);
 authRoutes(app); // This is imp , placing this line on top after const keys gives initialization error
 //billingRoutes(app);
 
-// if(process.env.NODE_ENV === 'Production'){
-//   //Express will serve up production assets like
-//   //main.js or main.css
-//   app.use(express.static('client/build'));
+if (process.env.NODE_ENV === "Production") {
+  //Express will serve up production assets like
+  //main.js or main.css
+  app.use(express.static("client/build"));
 
-//   //Express will serve index.html in all other cases if it 
-//   //doesn't recognise the route
+  //Express will serve index.html in all other cases if it
+  //doesn't recognise the route
 
-//   const path = require('path');
-//   app.get('*', (req, res) => {
-//     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-//   })
-// }
+  const path = require("path");
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 const port = process.env.PORT || 8999;
 app.listen(port);
