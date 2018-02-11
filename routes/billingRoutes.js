@@ -14,6 +14,8 @@ module.exports = (app) => {
           })
           .then(charge => {
               req.user.credits += 5;
+              console.log('&&&&&&&&&&&&&&&&&&&&&&&', charge);
+              console.log('Credits added ************', req.user.credits);
               req.user.save()
               .then(user => {
                   res.send(user);
