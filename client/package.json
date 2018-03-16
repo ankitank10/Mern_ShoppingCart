@@ -3,11 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "proxy": {
-    "/auth/google": {
-      "target": "http://localhost:8999"
-    },
     "/api/*": {
-      "target": "http://localhost:8999"
+      "target": "http://localhost:9999"
     }
   },
   "dependencies": {

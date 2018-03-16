@@ -1,29 +1,37 @@
 import axios from "axios";
 import types from "./types";
 
-function fetchUser() {
-  const request = axios.get("/api/current_user");
+function fetchCartProducts() {
+  const request = axios.get("/api/getProducts");
   return dispatch => {
     request.then(res => {
       dispatch({
-        type: types.fetchUser,
+        type: types.fetchCartProducts,
         payload: res.data
       });
     });
   };
 }
 
-function handlePaymentToken(token){
-  const request = axios.post("/api/stripe", token);
+function modifyCart(index, operation) {
+  return dispatch => {
+    dispatch({
+      type: types.modifyCart,
+      payload: { index, operation }
+    });
+  };
+}
+
+function buyNow(products){
+  const request = axios.post("/api/buyNow", products);
   return dispatch => {
     request.then(res => {
       dispatch({
-        type: types.fetchUser,
+        type: types.buyNow,
         payload: res.data
       })
     })
   }
-
 }
 
-export { fetchUser, handlePaymentToken };
+export {fetchCartProducts, modifyCart, buyNow};

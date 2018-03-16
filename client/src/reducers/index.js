@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
-import authReducer from './authReducer';
+import {cartData, purchaseStatus} from './cartProdReducer';
 
 export default combineReducers({
-  auth: authReducer
+  cartData: cartData,
+  purchaseStatus: purchaseStatus
 });
